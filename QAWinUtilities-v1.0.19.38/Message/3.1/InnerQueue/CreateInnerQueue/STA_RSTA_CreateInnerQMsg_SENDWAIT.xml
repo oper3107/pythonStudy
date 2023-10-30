@@ -1,0 +1,14 @@
+<service id="STA" target="[EQID]" tid="[TID]" user="" >
+	<method id="CREATEINNERQMSG" preProcess="" >
+		<data targetApp="RSTA" targetEqp="[EQID]" preProcess="" 
+			timeout="10000" sleep="0" reply="true" replySleep="0" 
+			compress="false" msgType="Object"
+			dp="application=1;context=0;alarm=0;metrology=0" 
+			context="application=0;summary=0;persistence=0" 
+			alarm="application=0;context=0;persistence=0" 
+			metrology="application=0;persistence=0" 
+			summary="application=0;persistence=0" 
+			persistence="application=0;"   
+			uniKeyType="string" sentTime="[TIME]" />
+	</method>
+</service>

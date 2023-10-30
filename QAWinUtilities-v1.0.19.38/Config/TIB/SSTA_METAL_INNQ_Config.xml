@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+  <application name="SSTA_INNQ" />
+  <tester testerType="SENDER" subject="QAEES02.PP.TIB" senderType="SEND" mode="TRACE" timeOut="10000" />
+  <condition conditionType="DURATION" interval="1000" upto="2" />
+  <message msgType="FILE" msg=".\Message\2.2.5\SSTA_CREATEINNERQ.xml" />
+  <!-- network=;192.168.1.1; serviceno=7500 daemon=192.168.1.1:7500 fieldname=DATA... -->
+  <tibrv network="" serviceno="" daemon="192.168.4.9:7500" fieldname="DATA" />
+  <equipment id="MDWE" start="01" count="2" />
+</config>

@@ -1,0 +1,10 @@
+<service id="RSTA" _pid="" user="" customKey="" targetType="" target="[EQID]" source="" tid="[TID]">
+	<method id="SAVETRANSACTION" preProcess="">
+		<data>
+			<transaction tid="[TID]" appSleep="0" />
+			<time>
+				<sentTime>[TIME]</sentTime>
+			</time>
+		</data>
+	</method>
+</service>

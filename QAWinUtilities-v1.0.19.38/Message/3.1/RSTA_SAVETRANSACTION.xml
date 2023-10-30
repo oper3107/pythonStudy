@@ -1,0 +1,14 @@
+<service id="RSTA" _pid="" user="" customKey="" targetType="" target="[EQID]" source="" tid="[TID]">
+  <method id="SAVETRANSACTION" preProcess="">
+    <data tid="[TID]" appSleepTime="0" reply="false" 
+      dp="application=1;context=0;alarm=0;metrology=0" 
+      context="application=0;summary=0;persistence=0" 
+      alarm="application=0;context=0;persistence=0" 
+      metrology="application=0;persistence=0" 
+      summary="application=0;persistence=0" 
+      persistence="application=0;"  
+      sentTime="[TIME]" 
+      exception="application=false;worker=false;context=false;alarm=false;metrology=false;persistence=false;summary=false;"
+      comment="Message Sender" />
+  </method>
+</service>

@@ -1,0 +1,5 @@
+<service id="" _pid="" user="" customKey="" targetType="" target="" source="" tid="1">
+	<method id="SENDMESSAGE" preProcess="">
+		<data tid="1" to="host"  reply="flase" timeOut="0" replySleep="0" comment="Message Sender" />
+	</method>
+</service>

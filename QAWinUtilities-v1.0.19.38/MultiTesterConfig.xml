@@ -1,0 +1,20 @@
+<config>
+	<protocols default="TIB">
+		<protocol name="CSS" exe=".\CSSConsoleTester.exe" />
+		<protocol name="TIB" exe=".\TIBRVClient.exe" />
+	</protocols>
+	<applications default="STA_METAL_SAVE">
+		<application name="STA_METAL_SAVE" select="false"/>
+		<application name="STA_METAL_INNQ" select="false"/>
+		<application name="SSTA_METAL_SAVE" select="false"/>
+		<application name="SSTA_METAL_INNQ" select="false"/>
+		<application name="RSTA_METAL_SAVE" select="false"/>
+		<application name="RSTA_METAL_INNQ" select="false"/>
+		<application name="STA_TERA21_SAVE" select="false"/>
+		<application name="STA_TERA21_INNQ" select="false"/>
+		<application name="SSTA_TERA21_SAVE" select="false"/>
+		<application name="SSTA_TERA21_INNQ" select="false"/>
+		<application name="RSTA_TERA21_SAVE" select="false"/>
+		<application name="RSTA_TERA21_INNQ" select="false"/>
+	</applications>
+</config>

@@ -1,0 +1,13 @@
+<service id="SSTA" _pid="" user="" customKey="" targetType="" target="[EQID]" source="" tid="[TID]">
+	<method id="SENDLARGEDATA" preProcess="">
+		<transaction tid="[TID]" appName="SSTA" />
+		<time>
+			<sentTime>[TIME]</sentTime>
+		</time>
+		<data subject="TRUST.QAEES02" isCompress="false" sendType="workflow" targetApp="SSTA">
+			<file>
+				PARAMDATA HDR=(DCS1, DCS1, DRTG703) TIMESTAMP=2009/02/17-17:34:52.68 EQPID=DRTG703 GROUPID=0 
+			</file>
+		</data>
+	</method>
+</service>

@@ -1,0 +1,5 @@
+<service id="STA" _pid="" user="" customKey="" targetType="" target="[EQID]" source="" tid="[TID]">
+	<method id="SAVETRANSACTION" preProcess="">
+		<data dasType="das" reply="false" getTidType="getTid" appSleepTime="0" sentTime="[TIME]" />
+	</method>
+</service>

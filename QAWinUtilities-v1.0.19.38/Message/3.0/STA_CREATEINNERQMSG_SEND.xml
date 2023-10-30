@@ -1,0 +1,7 @@
+<service id="STA" target="[EQID]" tid="[TID]" user="" >
+	<method id="CREATEINNERQMSG" preProcess="" >
+		<data targetApp="RSTA" targetEqp="[EQID]" preProcess="" timeout="0" sleep="0" reply="false" replySleep="0" 
+				appServer="1" context="true" alarm="1" uniKeyType="string" 
+ 				sentTime="[TIME]" />
+	</method>
+</service>

@@ -1,0 +1,5 @@
+<service id="SSTA" _pid="" user="" customKey="" targetType="" target="[EQID]" source="" tid="[TID]">
+	<method id="SAVETRANSACTION" preProcess="">
+		<data tid="[TID]" appName="SSTA" reply="false" appSleepTime="2000" appServer="1" context="true" alarm="true" sentTime="[TIME]" />
+	</method>
+</service>

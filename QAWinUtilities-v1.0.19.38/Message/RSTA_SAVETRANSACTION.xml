@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service id="RSTA" _pid="" user="" customKey="" targetType="" target="[EQID]" source="" tid="[TID]">
+	<method id="SAVETRANSACTION" preProcess="">
+		<transaction tid="[TID]" appName="RSTA" type="SLEEP" user="0" recvSleep="0"/>
+		<time>
+			<sentTime>[TIME]</sentTime>
+		</time>
+	</method>
+</service>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-16"?>
+<config>
+	<framework_set id="*">
+		<framework id="*">
+			<member id="*">
+				<item type="FAILOVER" name="CLIENT_CHANNEL">
+					<property name="BUS_TYPE" value="CSS" />
+					<property name="CUSTOM" value="&lt;config daemonType=&quot;&quot; messageLimit=&quot;10M&quot;&gt;&lt;daemonShutdown isShutdown=&quot;false&quot; memoryLimit=&quot;900M&quot;/&gt;&lt;logger name=&quot;CSS&quot; logDirectory=&quot;../log/css&quot; fileMode=&quot;DAILY&quot; fileSize=&quot;30M&quot; messageLength=&quot;1K&quot; mode=&quot;RUN&quot; maintenanceDay=&quot;7&quot; exclusive=&quot;YES&quot; startMode=&quot;NEW&quot;/&gt;&lt;daemons path=&quot;&quot; exe=&quot;cssdaemon.bat&quot;&gt;&lt;daemon address=&quot;&quot; port=&quot;10000&quot; retrycount=&quot;3&quot; interval=&quot;5000&quot;/&gt;&lt;/daemons&gt;&lt;networks&gt;&lt;network address=&quot;&quot; port=&quot;10000&quot; retrycount=&quot;3&quot; interval=&quot;5000&quot;/&gt;&lt;/networks&gt;&lt;/config&gt;" />
+					<property name="DAEMON" value="" />
+					<property name="SUBJECT" value="QA.PP.CLIENT_CHANNEL" />
+					<property name="SUPERVISOR_LISTENER_TYPE" value="BISTel.PeakPerformance.Supervisor.CSS.CssListener" />
+					<property name="SUPERVISOR_SENDER_TYPE" value="BISTel.PeakPerformance.Supervisor.CSS.CssSender" />
+				</item>
+				<item type="FAILOVER" name="SERVER_CHANNEL">
+					<property name="BUS_TYPE" value="CSS" />
+					<property name="DAEMON" value="" />
+					<property name="FRAMEWORK_SENDER_TYPE" value="BISTel.PeakPerformance.Supervisor.CssSender" />
+					<property name="LOGGER" value="FRAMEWORK" />
+					<property name="NETWORK" value="" />
+					<property name="SERVICE" value="" />
+					<property name="SUBJECT" value="QA.PP.SERVER_CHANNEL" />
+					<property name="SUPERVISOR_LISTENER_TYPE" value="BISTel.PeakPerformance.Supervisor.CSS.CssListener" />
+					<property name="SUPERVISOR_SENDER_TYPE" value="BISTel.PeakPerformance.Supervisor.CSS.CssSender" />
+					<property name="TYPE" value="" />
+				</item>
+				<item type="FAILOVER" name="SUPERVISOR">
+					<property name="ADD_INTERVAL" value="5" />
+					<property name="DB_DOWN_KILL" value="T" />
+					<property name="MSG_DOWN_KILL" value="T" />
+					<property name="PPMON_INTERVAL" value="20" />
+					<property name="REPLY_TIMEOUT" value="5" />
+					<property name="RETRY_COUNT" value="3" />
+				</item>
+			</member>
+		</framework>
+	</framework_set>
+	<framework_set id="FW_SET">
+		<framework id="QAEES01">
+			<member id="*">
+				<item type="APPLICATION" name="CSTA">
+					<property name="DAS" value="FRAMEWORK" />
+					<property name="DAS2" value="SYSTEM_DAS2" />
+					<property name="LOGGER" value="STA" />
+					<property name="STANDBY_MODE" value="N" />
+					<property name="SYNC_DATA_TYPE" value="OBJECT" />
+					<property name="THREAD_COUNT" value="10" />
+					<property name="TYPE" value="BISTel.PeakPerformance.STA.STAControlManager" />
+				</item>
+				<item type="APPLICATION" name="RSTA">
+					<property name="DAS" value="FRAMEWORK" />
+					<property name="DAS2" value="SYSTEM_DAS2" />
+					<property name="LOGGER" value="STA" />
+					<property name="QUEUE_TYPE" value="EQUIPMENT_MST_PP" />
+					<property name="STANDBY_MODE" value="N" />
+					<property name="SYNC_DATA_COMPRESS_YN" value="N" />
+					<property name="SYNC_DATA_TYPE" value="OBJECT" />
+					<property name="TYPE" value="BISTel.PeakPerformance.STA.STARetainManager" />
+				</item>
+				<item type="APPLICATION" name="SSTA">
+					<property name="DAS" value="FRAMEWORK" />
+					<property name="DAS2" value="SYSTEM_DAS2" />
+					<property name="LOGGER" value="STA" />
+					<property name="QUEUE_TYPE" value="EQUIPMENT_MST_PP" />
+					<property name="STANDBY_MODE" value="FALSE" />
+					<property name="TYPE" value="BISTel.PeakPerformance.STA.STASerialManager" />
+				</item>
+				<item type="APPLICATION" name="STA">
+					<property name="DAS" value="FRAMEWORK" />
+					<property name="DAS2" value="SYSTEM_DAS2" />
+					<property name="LOGGER" value="STA" />
+					<property name="STANDBY_MODE" value="FALSE" />
+					<property name="SYNC_DATA_TYPE" value="OBJECT" />
+					<property name="THREAD_COUNT" value="2" />
+					<property name="TYPE" value="BISTel.PeakPerformance.STA.STAParallelManager" />
+				</item>
+				<item type="CONNECTIVITY" name="CSS">
+					<property name="CUSTOM" value="&lt;custom subjectName=&quot;QAEES01.PP.CSS&quot;&gt;&#xA;                    &lt;config daemonType=&quot;&quot; messageLimit=&quot;10M&quot;&gt; &#xA;                        &lt;daemonShutdown isShutdown=&quot;true&quot; memoryLimit=&quot;800M&quot;/&gt;&#xA;                        &lt;logger name=&quot;CSS&quot; logDirectory=&quot;log/CSS/&quot; fileMode=&quot;DAILY&quot; fileSize=&quot;30M&quot; messageLength=&quot;1K&quot; mode=&quot;TRACE&quot; maintenanceDay=&quot;1&quot; exclusive=&quot;YES&quot; startMode=&quot;APPEND&quot;/&gt;&#xA;                        &lt;daemons path=&quot;&quot; exe=&quot;cssdaemon.bat&quot;&gt; &#xA;                            &lt;daemon address=&quot;&quot; port=&quot;10000&quot; retrycount=&quot;2&quot; interval=&quot;2000&quot;/&gt;&#xA;                        &lt;/daemons&gt;&#xA;                    &lt;/config&gt;&#xA;                &lt;/custom&gt;" />
+					<property name="LOGGER" value="CONNCSS" />
+					<property name="MESSAGE_TYPE" value="STRING" />
+					<property name="SUBJECT" value="QAEES01.PP.CSS" />
+					<property name="TYPE" value="BISTel.PeakPerformance.Connectivity.CSS.CSSConnectivity" />
+				</item>
+				<item type="CONNECTIVITY" name="CSS_TR">
+					<property name="CUSTOM" value="&lt;custom subjectName=&quot;TRUST.QAEES01&quot;&gt;&#xA;                    &lt;config daemonType=&quot;&quot; messageLimit=&quot;10M&quot;&gt; &#xA;                        &lt;daemonShutdown isShutdown=&quot;true&quot; memoryLimit=&quot;800M&quot;/&gt;&#xA;                        &lt;logger name=&quot;CSS&quot; logDirectory=&quot;log/CSS/&quot; fileMode=&quot;DAILY&quot; fileSize=&quot;30M&quot; messageLength=&quot;1K&quot; mode=&quot;TRACE&quot; maintenanceDay=&quot;1&quot; exclusive=&quot;YES&quot; startMode=&quot;APPEND&quot;/&gt;&#xA;                        &lt;daemons path=&quot;&quot; exe=&quot;cssdaemon.bat&quot;&gt; &#xA;                            &lt;daemon address=&quot;&quot; port=&quot;10000&quot; retrycount=&quot;2&quot; interval=&quot;2000&quot;/&gt;&#xA;                        &lt;/daemons&gt;&#xA;                    &lt;/config&gt;&#xA;                &lt;/custom&gt;" />
+					<property name="LOGGER" value="CONNTRUST" />
+					<property name="SUBJECT" value="TRUST.QAEES01" />
+					<property name="TYPE" value="BISTel.PeakPerformance.Connectivity.Trust.CSSConnectivity" />
+				</item>
+				<item type="CONNECTIVITY" name="TIB">
+					<property name="DAEMON" value="" />
+					<property name="FIELDNAME" value="DATA" />
+					<property name="LOGGER" value="CONNTIB" />
+					<property name="MESSAGE_TYPE" value="OBJECT" />
+					<property name="NETWORK" value="" />
+					<property name="SERVICE" value="" />
+					<property name="SUBJECT" value="QAEES01.PP.TIB" />
+					<property name="TYPE" value="BISTel.PeakPerformance.Connectivity.TIB.TibrvConnectivity" />
+				</item>
+				<item type="DAS" name="FRAMEWORK">
+					<property name="BATCH_SIZE" value="5" />
+					<property name="EXPIRATION_TIME" value="600000" />
+					<property name="MAX" value="40" />
+					<property name="MAX_RETRY" value="10" />
+					<property name="MIN" value="10" />
+					<property name="SERVICE_INFO" value="jdbc:oracle:thin:ees22/ees22@192.168.3.7:1521:eesdb7" />
+					<property name="SLEEP_TIME" value="60000" />
+					<property name="TYPE_INFO" value="oracle.jdbc.OracleDriver" />
+				</item>
+				<item type="DAS2" name="SYSTEM_DAS2">
+					<property name="CHECK_INTERVAL" value="30000" />
+					<property name="MAX" value="40" />
+					<property name="MIN" value="10" />
+					<property name="PASSWORD" value="ees22" />
+					<property name="SERVICE_INFO" value="jdbc:oracle:thin:@192.168.3.7:1521:eesdb7" />
+					<property name="TYPE_INFO" value="oracle.jdbc.OracleDriver" />
+					<property name="USER" value="ees22" />
+				</item>
+				<item type="FAILOVER" name="MONITORING">
+					<property name="APP_LIST" value="STA;RSTA" />
+					<property name="APP_MAX_PTIME" value="10" />
+					<property name="APP_REFRESH_QCOUNT" value="20" />
+					<property name="APP_TOTAL_QCOUNT" value="50" />
+					<property name="APP_WARN_PTIME" value="2" />
+					<property name="APP_WARN_QCOUNT" value="5" />
+					<property name="CONN_WARN_QCOUNT" value="5" />
+					<property name="IS_REFRESH_Q" value="F" />
+					<property name="VM_WARN_SIZE" value="2048" />
+				</item>
+				<item type="SCHEDULER" name="SCHD_STA_SAVETRANSACTION">
+					<property name="COUNT" value="0" />
+					<property name="INTERVAL_TYPE" value="SEC" />
+					<property name="INTERVAL_VALUE" value="5" />
+					<property name="MESSAGE" value="&lt;service id=&quot;@SERVICE&quot; _pid=&quot;&quot; user=&quot;&quot; customKey=&quot;&quot; targetType=&quot;&quot; target=&quot;MDWE01&quot; source=&quot;&quot; tid=&quot;1&quot;&gt;&#xA;    &lt;method id=&quot;SAVETRANSACTION&quot; preProcess=&quot;&quot;&gt;&#xA;        &lt;transaction tid=&quot;1&quot; appName=&quot;STA&quot; /&gt;&#xA;        &lt;time&gt;&#xA;            &lt;sentTime&gt;2005-10-24 04:20:22.323&lt;/sentTime&gt;&#xA;        &lt;/time&gt;&#xA;    &lt;/method&gt;&#xA;&lt;/service&gt;" />
+					<property name="SERVICE_ID" value="STA" />
+					<property name="START_TIME" value="AUTO" />
+				</item>
+				<item type="SYSTEM" name="CLASSLOADER">
+					<property name="DEBUG" value="FALSE" />
+					<property name="DIRECTORY" value="" />
+					<property name="SERVICE_INFO" value=" " />
+					<property name="TYPE" value="BISTel.PeakPerformance.ClassLoader.OracleCodeProvider" />
+				</item>
+				<item type="SYSTEM" name="DEFAULT">
+					<property name="DAS" value="FRAMEWORK" />
+					<property name="DAS2.LOGGER" value="FRAMEWORK" />
+					<property name="DEBUG" value="false" />
+					<property name="ENCODING" value="EUC-KR" />
+					<property name="FAB_NAME" value="*" />
+				</item>
+				<item type="SYSTEM" name="EQUIPMENT">
+					<property name="DAS" value="FRAMEWORK" />
+					<property name="TABLE" value="EQUIPMENT_MST_PP" />
+					<property name="TYPE" value="BISTel.PeakPerformance.Message.DBEqpModelProvider" />
+					<property name="UPDATE_INTERVAL" value="60" />
+					<property name="UPDATE_TYPE" value="AUTO" />
+				</item>
+				<item type="SYSTEM" name="INITIALIZATION">
+					<property name="TYPE" value="" />
+				</item>
+				<item type="SYSTEM" name="INNERQUEUE">
+					<property name="EXTERNAL_CONNECTIVITY" value="TIB" />
+				</item>
+				<item type="SYSTEM" name="PERFORMANCE">
+					<property name="INTERVAL" value="30000" />
+					<property name="LOGGER" value="TEST" />
+					<property name="MODE" value="ON" />
+				</item>
+				<item type="SYSTEM" name="TRUST_MESSENGER">
+					<property name="CONNECTIVITY" value="CSS_TR" />
+					<property name="PATH" value="log/qaees01/trust" />
+					<property name="SEGMENT_SIZE" value="50K" />
+					<property name="TIMEOUT" value="6000" />
+				</item>
+				<item type="SYSTEM" name="XMLMAPPING">
+					<property name="FILE" value="config/xmlMappings.xml" />
+					<property name="MODE" value="ON" />
+				</item>
+			</member>
+		</framework>
+	</framework_set>
+	<framework_set id="FW_SET">
+		<framework id="QAEES01">
+			<member id="PPFW01">
+				<item type="LOGGER" name="CONNCSS">
+					<property name="BUFFER_COUNT" value="3" />
+					<property name="DIRECTORY" value="log/qaees01/ppfw01/conn/css/" />
+					<property name="EXCLUSIVE" value="YES" />
+					<property name="FILE_MODE" value="DAILY" />
+					<property name="FILE_SIZE" value="10M" />
+					<property name="MAINTENANCE_DAY" value="7" />
+					<property name="MESSAGE_LENGTH" value="-1" />
+					<property name="MODE" value="TRACE" />
+					<property name="START_MODE" value="APPEND" />
+				</item>
+				<item type="LOGGER" name="CONNTIB">
+					<property name="BUFFER_COUNT" value="3" />
+					<property name="DIRECTORY" value="log/qaees01/ppfw01/conn/tib/" />
+					<property name="EXCLUSIVE" value="YES" />
+					<property name="FILE_MODE" value="DAILY" />
+					<property name="FILE_SIZE" value="10M" />
+					<property name="MAINTENANCE_DAY" value="7" />
+					<property name="MESSAGE_LENGTH" value="-1" />
+					<property name="MODE" value="TRACE" />
+					<property name="START_MODE" value="APPEND" />
+				</item>
+				<item type="LOGGER" name="CONNTRUST">
+					<property name="BUFFER_COUNT" value="3" />
+					<property name="DIRECTORY" value="log/qaees01/ppfw01/conn/trust/" />
+					<property name="EXCLUSIVE" value="YES" />
+					<property name="FILE_MODE" value="DAILY" />
+					<property name="FILE_SIZE" value="10M" />
+					<property name="MAINTENANCE_DAY" value="7" />
+					<property name="MESSAGE_LENGTH" value="-1" />
+					<property name="MODE" value="TRACE" />
+					<property name="START_MODE" value="APPEND" />
+				</item>
+				<item type="LOGGER" name="DAS2">
+					<property name="BUFFER_COUNT" value="3" />
+					<property name="DIRECTORY" value="log/qaees01/ppfw01/das2" />
+					<property name="EXCLUSIVE" value="YES" />
+					<property name="FILE_MODE" value="DAILY" />
+					<property name="FILE_SIZE" value="10M" />
+					<property name="MAINTENANCE_DAY" value="7" />
+					<property name="MESSAGE_LENGTH" value="-1" />
+					<property name="MODE" value="RUN" />
+					<property name="START_MODE" value="APPEND" />
+				</item>
+				<item type="LOGGER" name="FRAMEWORK">
+					<property name="BUFFER_COUNT" value="3" />
+					<property name="DIRECTORY" value="log/qaees01/ppfw01/framework/" />
+					<property name="EXCLUSIVE" value="YES" />
+					<property name="FILE_MODE" value="DAILY" />
+					<property name="FILE_SIZE" value="10M" />
+					<property name="MAINTENANCE_DAY" value="7" />
+					<property name="MESSAGE_LENGTH" value="-1" />
+					<property name="MODE" value="RUN" />
+					<property name="START_MODE" value="APPEND" />
+				</item>
+				<item type="LOGGER" name="STA">
+					<property name="BUFFER_COUNT" value="3" />
+					<property name="DIRECTORY" value="log/qaees01/ppfw01/sta" />
+					<property name="EXCLUSIVE" value="YES" />
+					<property name="FILE_MODE" value="DAILY" />
+					<property name="FILE_SIZE" value="10M" />
+					<property name="MAINTENANCE_DAY" value="7" />
+					<property name="MESSAGE_LENGTH" value="-1" />
+					<property name="MODE" value="TRACE" />
+					<property name="START_MODE" value="APPEND" />
+				</item>
+				<item type="LOGGER" name="TEST">
+					<property name="BUFFER_COUNT" value="3" />
+					<property name="DIRECTORY" value="log/qaees01/ppfw01/test" />
+					<property name="EXCLUSIVE" value="YES" />
+					<property name="FILE_MODE" value="DAILY" />
+					<property name="FILE_SIZE" value="10M" />
+					<property name="MAINTENANCE_DAY" value="7" />
+					<property name="MESSAGE_LENGTH" value="-1" />
+					<property name="MODE" value="DEBUG" />
+					<property name="START_MODE" value="APPEND" />
+				</item>
+				<item type="LOGGERS" name="DEFAULT">
+					<property name="BUFFER_COUNT" value="1" />
+					<property name="DIRECTORY" value="log" />
+					<property name="NAME" value="FRAMEWORK" />
+				</item>
+				<item type="SYSTEM" name="CLUSTER">
+					<property name="DAS" value="MONITOR" />
+					<property name="LOCAL_ADDRESS" value="192.168.1.166" />
+					<property name="LOCAL_INTERVAL" value="1000" />
+					<property name="LOCAL_PORT" value="10004" />
+					<property name="LOCAL_RETRY" value="2" />
+					<property name="MODE" value="APP" />
+					<property name="PID_INFO" value="" />
+					<property name="REMOTE_ADDRESS" value="192.168.1.166" />
+					<property name="REMOTE_CHECK_REPLY" value="50000" />
+					<property name="REMOTE_INTERVAL" value="2000" />
+					<property name="REMOTE_INTERVAL_ALIVE" value="50000" />
+					<property name="REMOTE_PORT" value="10005" />
+					<property name="REMOTE_RETRY" value="2" />
+					<property name="REMOTE_TIMEOUT" value="10000" />
+					<property name="TYPE" value="BISTel.PeakPerformance.Framework.MonitoringConnectivity" />
+				</item>
+			</member>
+		</framework>
+	</framework_set>
+	<framework_set id="FW_SET">
+		<framework id="QAEES01">
+			<member id="PPFW02">
+				<item type="LOGGER" name="CONNCSS">
+					<property name="BUFFER_COUNT" value="3" />
+					<property name="DIRECTORY" value="log/qaees01/ppfw02/conn/css/" />
+					<property name="EXCLUSIVE" value="YES" />
+					<property name="FILE_MODE" value="DAILY" />
+					<property name="FILE_SIZE" value="10M" />
+					<property name="MAINTENANCE_DAY" value="7" />
+					<property name="MESSAGE_LENGTH" value="-1" />
+					<property name="MODE" value="TRACE" />
+					<property name="START_MODE" value="APPEND" />
+				</item>
+				<item type="LOGGER" name="FRAMEWORK">
+					<property name="BUFFER_COUNT" value="3" />
+					<property name="DIRECTORY" value="log/qaees01/ppfw02/framework/" />
+					<property name="EXCLUSIVE" value="YES" />
+					<property name="FILE_MODE" value="DAILY" />
+					<property name="FILE_SIZE" value="10M" />
+					<property name="MAINTENANCE_DAY" value="7" />
+					<property name="MESSAGE_LENGTH" value="-1" />
+					<property name="MODE" value="RUN" />
+					<property name="START_MODE" value="APPEND" />
+				</item>
+				<item type="LOGGER" name="STA">
+					<property name="BUFFER_COUNT" value="3" />
+					<property name="DIRECTORY" value="log/qaees01/ppfw02/sta" />
+					<property name="EXCLUSIVE" value="YES" />
+					<property name="FILE_MODE" value="DAILY" />
+					<property name="FILE_SIZE" value="10M" />
+					<property name="MAINTENANCE_DAY" value="7" />
+					<property name="MESSAGE_LENGTH" value="-1" />
+					<property name="MODE" value="TRACE" />
+					<property name="START_MODE" value="APPEND" />
+				</item>
+				<item type="LOGGER" name="TEST">
+					<property name="BUFFER_COUNT" value="3" />
+					<property name="DIRECTORY" value="log/qaees01/ppfw02/test" />
+					<property name="EXCLUSIVE" value="YES" />
+					<property name="FILE_MODE" value="DAILY" />
+					<property name="FILE_SIZE" value="10M" />
+					<property name="MAINTENANCE_DAY" value="7" />
+					<property name="MESSAGE_LENGTH" value="-1" />
+					<property name="MODE" value="DEBUG" />
+					<property name="START_MODE" value="APPEND" />
+				</item>
+				<item type="LOGGERS" name="DEFAULT">
+					<property name="BUFFER_COUNT" value="1" />
+					<property name="DIRECTORY" value="log" />
+					<property name="NAME" value="FRAMEWORK" />
+				</item>
+				<item type="SYSTEM" name="CLUSTER">
+					<property name="DAS" value="MONITOR" />
+					<property name="LOCAL_ADDRESS" value="192.168.1.166" />
+					<property name="LOCAL_INTERVAL" value="1000" />
+					<property name="LOCAL_PORT" value="10004" />
+					<property name="LOCAL_RETRY" value="2" />
+					<property name="MODE" value="APP" />
+					<property name="PID_INFO" value="" />
+					<property name="REMOTE_ADDRESS" value="192.168.1.166" />
+					<property name="REMOTE_CHECK_REPLY" value="50000" />
+					<property name="REMOTE_INTERVAL" value="2000" />
+					<property name="REMOTE_INTERVAL_ALIVE" value="50000" />
+					<property name="REMOTE_PORT" value="10005" />
+					<property name="REMOTE_RETRY" value="2" />
+					<property name="REMOTE_TIMEOUT" value="10000" />
+					<property name="TYPE" value="BISTel.PeakPerformance.Framework.MonitoringConnectivity" />
+				</item>
+			</member>
+		</framework>
+	</framework_set>
+</config>
